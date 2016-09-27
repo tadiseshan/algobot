@@ -1,1 +1,1 @@
-worker: headlines.py
+worker: python headlines.py
