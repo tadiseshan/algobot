@@ -4,6 +4,7 @@ import random
 import json
 import requests 
 import sys
+import time
 
 def get():
 	query = "algorithm"
@@ -36,5 +37,8 @@ def tweet(headline):
 
 	api.update_status(tweet)
 
-if __name__ == "__main__":
-    get()
+while True:
+	get()
+	time.sleep(300)
+# if __name__ == "__main__":
+#     get()
