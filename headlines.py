@@ -37,8 +37,5 @@ def tweet(headline):
 
 	api.update_status(tweet)
 
-while True:
-	get()
-	time.sleep(300)
-# if __name__ == "__main__":
-#     get()
+if __name__ == "__main__":
+    get()
