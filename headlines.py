@@ -22,12 +22,18 @@ def get():
 
 	tweet(getHeadlines('https://news.google.com/news?cf=all&hl=en&pz=1&ned=us&q=algorithm&output=rss'))
 
+def process(headline):
+	sep = ' - '
+	rest = headline.split(sep, 1)[0]
+	return rest
+
+
 def tweet(headline):
 	auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
 	auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)
 	api = tweepy.API(auth)
 
-	tweet = random.choice(headline)
+	tweet = process(random.choice(headline))
 
 	api.update_status(tweet)
 
