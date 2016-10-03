@@ -29,15 +29,15 @@ def process(headline):
 	rest2 = rest.split(sep2, 1)[0]
 	return rest2
 
-def add_id_to_file(id):
+def add_id_to_file(tweet):
 	with open('already_tweeted.txt', 'a') as file:
-		file.write(str(id) + "\n")
+		file.write(str(tweet) + "\n")
 
-def duplicate_check(id):
+def duplicate_check(tweet):
 	found = 0
 	with open('already_tweeted.txt', 'r') as file:
 		for line in file:
-			if id in line:
+			if tweet in line:
 				found = 1
 	return found
 
