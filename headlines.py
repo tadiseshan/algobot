@@ -25,8 +25,21 @@ def get():
 def process(headline):
 	sep = ' - '
 	rest = headline.split(sep, 1)[0]
-	return rest
+	sep2 = ' ...'
+	rest2 = rest.split(sep2, 1)[0]
+	return rest2
 
+def add_id_to_file(id):
+	with open('already_tweeted.txt', 'a') as file:
+		file.write(str(id) + "\n")
+
+def duplicate_check(id):
+	found = 0
+	with open('already_tweeted.txt', 'r') as file:
+		for line in file:
+			if id in line:
+				found = 1
+	return found
 
 def tweet(headline):
 	auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
@@ -34,8 +47,11 @@ def tweet(headline):
 	api = tweepy.API(auth)
 
 	tweet = process(random.choice(headline))
-
-	api.update_status(tweet)
+	
+	if duplicate_check(tweet) == 0:
+		add_id_to_file(tweet)
+		api.update_status(tweet)
+	else: print('tweet already tweeted')
 
 if __name__ == "__main__":
     get()
