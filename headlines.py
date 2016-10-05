@@ -27,7 +27,10 @@ def process(headline):
 	rest = headline.split(sep, 1)[0]
 	sep2 = ' ...'
 	rest2 = rest.split(sep2, 1)[0]
-	return rest2
+	sep3 = ' | '
+	rest3 = rest2.split(sep3, 1)[0]
+	return rest3
+	#messy, fix
 
 def add_id_to_file(tweet):
 	with open('already_tweeted.txt', 'a') as file:
